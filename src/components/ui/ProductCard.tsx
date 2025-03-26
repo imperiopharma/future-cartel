@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ShoppingCart, Heart } from 'lucide-react';
+import { ShoppingCart } from 'lucide-react';
 import { useCart, Product } from '@/context/CartContext';
 import { toast } from 'sonner';
 
@@ -18,54 +18,45 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     
     addToCart(product, 1);
     
-    toast.success(`${product.name} added to cart`, {
-      description: 'Go to cart to complete your purchase',
+    toast.success(`${product.name} adicionado ao carrinho`, {
+      description: 'Vá para o carrinho para concluir seu pedido',
       action: {
-        label: 'View Cart',
+        label: 'Ver Carrinho',
         onClick: () => window.location.href = '/cart'
       }
     });
   };
 
+  // Formato de preço estilo brasileiro
+  const formatPrice = (price: number) => {
+    return `R$ ${price.toFixed(2).replace('.', ',')}`;
+  };
+
   return (
-    <Link to={`/product/${product.id}`} className="product-card group animate-fade-in">
-      <div className="relative overflow-hidden rounded-2xl">
+    <Link to={`/product/${product.id}`} className="food-item animate-fade-in">
+      <div className="food-info">
+        <h3 className="food-title">{product.name}</h3>
+        <p className="food-description line-clamp-2">{product.description}</p>
+        <div className="flex items-center">
+          <span className="food-price">{formatPrice(product.price)}</span>
+          {product.id % 3 === 0 && (
+            <span className="old-price">{formatPrice(product.price * 1.2)}</span>
+          )}
+        </div>
+      </div>
+      <div className="flex flex-col items-end gap-2">
         <img 
           src={product.image} 
           alt={product.name} 
-          className="product-card-img"
+          className="food-image"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        
-        {/* Action buttons */}
-        <div className="absolute bottom-0 left-0 right-0 p-4 flex justify-between transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-          <button 
-            onClick={handleAddToCart}
-            className="p-3 rounded-full bg-white/90 text-primary hover:bg-white transition-colors duration-200"
-            aria-label="Add to cart"
-          >
-            <ShoppingCart size={20} />
-          </button>
-          
-          <button 
-            className="p-3 rounded-full bg-white/90 text-primary hover:bg-white transition-colors duration-200"
-            aria-label="Add to wishlist"
-          >
-            <Heart size={20} />
-          </button>
-        </div>
-      </div>
-      
-      <div className="product-card-content">
-        <h3 className="text-lg font-medium mb-1 truncate">{product.name}</h3>
-        <p className="text-muted-foreground text-sm mb-2 line-clamp-2">{product.description}</p>
-        <div className="flex justify-between items-center">
-          <span className="font-bold text-lg">${product.price.toFixed(2)}</span>
-          <span className="text-xs px-2 py-1 rounded-full bg-secondary text-secondary-foreground">
-            {product.category}
-          </span>
-        </div>
+        <button 
+          onClick={handleAddToCart}
+          className="text-xs text-[hsl(var(--delivery-blue))] font-medium"
+        >
+          Adicionar
+        </button>
       </div>
     </Link>
   );

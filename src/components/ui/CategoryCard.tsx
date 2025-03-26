@@ -14,21 +14,17 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ category }) => {
   return (
     <Link 
       to={`/products?category=${category.name}`} 
-      className="category-card animate-fade-in"
+      className="category-tab flex flex-col items-center animate-fade-in"
     >
-      <div className="relative overflow-hidden">
+      <div className="w-14 h-14 rounded-full bg-white overflow-hidden shadow mb-1">
         <img 
           src={category.image} 
           alt={category.name} 
-          className="category-card-img"
+          className="w-full h-full object-cover"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-        <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-          <h3 className="text-xl font-semibold">{category.name}</h3>
-          <p className="text-sm text-white/80">Explore collection</p>
-        </div>
       </div>
+      <span className="text-xs font-medium text-gray-700">{category.name}</span>
     </Link>
   );
 };

@@ -25,6 +25,11 @@
     --input: 240 5.9% 90%;
     --ring: 240 5.9% 10%;
     --radius: 1rem;
+    
+    /* Novas cores para o delivery brasileiro */
+    --delivery-blue: 210 100% 59%;
+    --delivery-red: 0 100% 50%;
+    --promotion-yellow: 48 100% 50%;
   }
 
   * {
@@ -101,6 +106,83 @@
 
   .scroll-container {
     @apply overflow-y-auto scrollbar-thin;
+  }
+  
+  /* Estilos para o app de delivery brasileiro */
+  .delivery-app {
+    @apply max-w-md mx-auto bg-white shadow-lg rounded-3xl overflow-hidden;
+  }
+  
+  .delivery-header {
+    @apply bg-[hsl(var(--delivery-blue))] text-white p-4 rounded-b-[30px];
+  }
+  
+  .delivery-search {
+    @apply bg-white rounded-full py-3 px-4 flex items-center shadow-md;
+  }
+  
+  .store-info {
+    @apply flex items-center text-white mt-3;
+  }
+  
+  .store-logo {
+    @apply w-10 h-10 rounded-full bg-white p-0.5 mr-3;
+  }
+  
+  .category-tabs {
+    @apply flex overflow-x-auto py-2 border-b border-gray-200 space-x-4 px-4 scrollbar-thin;
+  }
+  
+  .category-tab {
+    @apply px-3 py-2 text-sm font-medium whitespace-nowrap cursor-pointer;
+  }
+  
+  .category-tab.active {
+    @apply text-[hsl(var(--delivery-blue))] border-b-2 border-[hsl(var(--delivery-blue))];
+  }
+  
+  .promotion-tag {
+    @apply inline-flex items-center bg-[hsl(var(--promotion-yellow))]/10 text-[hsl(var(--promotion-yellow))] px-2 py-1 rounded text-sm font-medium;
+  }
+  
+  .food-item {
+    @apply border-b border-gray-100 p-4 flex justify-between items-center;
+  }
+  
+  .food-info {
+    @apply flex-1;
+  }
+  
+  .food-title {
+    @apply font-bold text-gray-900 text-lg;
+  }
+  
+  .food-description {
+    @apply text-gray-500 text-sm;
+  }
+  
+  .food-price {
+    @apply text-[hsl(var(--delivery-red))] font-bold text-lg mt-1;
+  }
+  
+  .old-price {
+    @apply line-through text-gray-400 text-sm ml-2;
+  }
+  
+  .food-image {
+    @apply w-20 h-20 rounded-lg object-cover ml-4;
+  }
+  
+  .delivery-footer {
+    @apply fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 py-2 px-4 flex justify-around items-center max-w-md mx-auto;
+  }
+  
+  .footer-item {
+    @apply flex flex-col items-center text-xs text-gray-500;
+  }
+  
+  .footer-item.active {
+    @apply text-[hsl(var(--delivery-blue))];
   }
 }
 

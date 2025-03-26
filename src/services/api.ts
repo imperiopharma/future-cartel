@@ -155,8 +155,14 @@ export const api = {
   adminDeleteProduct: async (id: number): Promise<boolean> => {
     await delay(700);
     const initialLength = mockProducts.length;
-    const newProducts = mockProducts.filter(p => p.id !== id);
-    mockProducts = newProducts;
+    // Find the index of the product to delete
+    const index = mockProducts.findIndex(p => p.id === id);
+    
+    // If product exists, remove it using splice (modifies the array in place)
+    if (index !== -1) {
+      mockProducts.splice(index, 1);
+    }
+    
     return initialLength > mockProducts.length;
   },
 

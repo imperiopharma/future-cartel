@@ -9,13 +9,13 @@ const NavigationFooter: React.FC = () => {
   
   return (
     <div className="delivery-footer">
-      <Link to="/" className="footer-item">
+      <Link to="/products" className="footer-item active">
         <Home size={20} />
         <span>Início</span>
       </Link>
-      <Link to="/products" className="footer-item active">
+      <Link to="/home" className="footer-item">
         <Menu size={20} />
-        <span>Cardápio</span>
+        <span>Sobre</span>
       </Link>
       <Link to="/cart" className="footer-item relative">
         <ShoppingCart size={20} />

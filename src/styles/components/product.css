@@ -1,0 +1,74 @@
+
+@layer components {
+  .product-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6;
+  }
+
+  .product-card {
+    @apply relative overflow-hidden rounded-2xl glass transition-all duration-300 hover:shadow-xl;
+  }
+
+  .product-card-img {
+    @apply w-full h-64 object-cover transition-transform duration-700 ease-in-out;
+  }
+  
+  .product-card:hover .product-card-img {
+    @apply scale-105;
+  }
+
+  .product-card-content {
+    @apply p-4 relative z-10;
+  }
+  
+  .food-item {
+    @apply border-b border-gray-100 p-4 flex justify-between items-center;
+  }
+  
+  .food-info {
+    @apply flex-1;
+  }
+  
+  .food-title {
+    @apply font-bold text-gray-900 text-lg;
+  }
+  
+  .food-description {
+    @apply text-gray-500 text-sm;
+  }
+  
+  .food-price {
+    @apply text-[hsl(var(--delivery-red))] font-bold text-lg mt-1;
+  }
+  
+  .old-price {
+    @apply line-through text-gray-400 text-sm ml-2;
+  }
+  
+  .food-image {
+    @apply w-20 h-20 rounded-lg object-cover ml-4 shadow-md;
+  }
+
+  .primary-button {
+    @apply px-6 py-3 glass rounded-full font-medium text-primary transition-all duration-300 hover:shadow-md active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2;
+  }
+
+  .accent-button {
+    @apply px-6 py-3 bg-primary text-primary-foreground rounded-full font-medium transition-all duration-300 hover:bg-primary/90 hover:shadow-md active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2;
+  }
+
+  .category-card {
+    @apply relative overflow-hidden rounded-2xl glass transition-all duration-300 hover:shadow-xl cursor-pointer;
+  }
+
+  .category-card-img {
+    @apply w-full h-40 object-cover transition-transform duration-700 ease-in-out;
+  }
+  
+  .category-card:hover .category-card-img {
+    @apply scale-105;
+  }
+
+  .input-field {
+    @apply w-full p-3 rounded-lg glass focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all duration-300;
+  }
+}

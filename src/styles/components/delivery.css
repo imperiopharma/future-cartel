@@ -1,0 +1,75 @@
+
+@layer components {
+  /* Estilos para o app de delivery brasileiro */
+  .delivery-app {
+    @apply max-w-md mx-auto bg-white shadow-lg rounded-3xl overflow-hidden;
+    overflow-x: hidden;
+  }
+  
+  .delivery-header {
+    @apply bg-gradient-to-r from-[hsl(var(--delivery-blue))] to-[hsl(var(--delivery-blue))/90] text-white p-4 rounded-b-[30px] shadow-lg;
+  }
+  
+  .delivery-search {
+    @apply bg-white rounded-full py-3 px-4 flex items-center shadow-md;
+  }
+  
+  .store-info {
+    @apply flex items-center text-white mt-3;
+  }
+  
+  .store-logo {
+    @apply w-10 h-10 rounded-full bg-white p-0.5 mr-3 shadow-md;
+  }
+  
+  .category-tabs {
+    @apply flex py-3 border-b border-gray-100 space-x-4 px-4;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  
+  .category-tabs::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .category-tab {
+    @apply px-3 py-2 text-sm font-medium whitespace-nowrap cursor-pointer;
+  }
+  
+  .category-tab.active {
+    @apply text-[hsl(var(--delivery-blue))] border-b-2 border-[hsl(var(--delivery-blue))];
+  }
+  
+  .promotion-tag {
+    @apply inline-flex items-center bg-[hsl(var(--promotion-yellow))]/10 text-[hsl(var(--promotion-yellow))] px-2 py-1 rounded text-sm font-medium;
+  }
+
+  /* Estilo para o navigation footer */
+  .delivery-footer {
+    @apply fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 py-2 px-2 flex justify-around items-center max-w-md mx-auto shadow-lg rounded-t-xl;
+  }
+  
+  .footer-item {
+    @apply flex flex-col items-center text-xs text-gray-500 transition-colors py-1 px-2 rounded-xl;
+  }
+  
+  .footer-item.active {
+    @apply text-[hsl(var(--delivery-blue))];
+  }
+  
+  .footer-icon-container {
+    @apply relative flex items-center justify-center mb-1 w-10 h-10 rounded-full;
+  }
+  
+  .footer-item.active .footer-icon-container {
+    @apply bg-[hsl(var(--delivery-blue))]/10;
+  }
+  
+  .footer-icon-indicator {
+    @apply absolute -bottom-1 w-1.5 h-1.5 rounded-full bg-[hsl(var(--delivery-blue))];
+  }
+  
+  .cart-counter {
+    @apply absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[hsl(var(--delivery-red))] text-white text-xs flex items-center justify-center font-bold shadow-md;
+  }
+}

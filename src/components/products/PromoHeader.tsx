@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { BadgePercent, FlameIcon, Clock } from 'lucide-react';
+import { BadgePercent, Clock } from 'lucide-react';
 
 interface PromoHeaderProps {
   categoryFilter: string | null;
@@ -22,14 +22,14 @@ const PromoHeader: React.FC<PromoHeaderProps> = ({ categoryFilter }) => {
         </div>
       </div>
       
-      <div className="mt-2 overflow-x-auto flex gap-2 pb-1 scrollbar-thin">
-        <div className="flex-shrink-0 bg-gradient-to-r from-orange-500/10 to-red-500/10 px-3 py-1 rounded-full text-sm font-medium text-orange-600 border border-orange-200">
+      <div className="mt-2 flex flex-wrap gap-2">
+        <div className="bg-gradient-to-r from-orange-500/10 to-red-500/10 px-3 py-1 rounded-full text-sm font-medium text-orange-600 border border-orange-200">
           <span>Até 40% OFF</span>
         </div>
-        <div className="flex-shrink-0 bg-gradient-to-r from-purple-500/10 to-blue-500/10 px-3 py-1 rounded-full text-sm font-medium text-blue-600 border border-blue-200">
+        <div className="bg-gradient-to-r from-purple-500/10 to-blue-500/10 px-3 py-1 rounded-full text-sm font-medium text-blue-600 border border-blue-200">
           <span>Frete Grátis</span>
         </div>
-        <div className="flex-shrink-0 bg-gradient-to-r from-green-500/10 to-teal-500/10 px-3 py-1 rounded-full text-sm font-medium text-green-600 border border-green-200">
+        <div className="bg-gradient-to-r from-green-500/10 to-teal-500/10 px-3 py-1 rounded-full text-sm font-medium text-green-600 border border-green-200">
           <span>Compre 1 Leve 2</span>
         </div>
       </div>

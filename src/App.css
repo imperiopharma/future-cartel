@@ -67,3 +67,18 @@
 .fade-in-animation {
   animation: fade-in-up 0.3s ease-out;
 }
+
+/* Estilos para evitar rolagem horizontal */
+body, html {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.overflow-x-auto {
+  overflow-x: visible;
+  flex-wrap: wrap;
+}

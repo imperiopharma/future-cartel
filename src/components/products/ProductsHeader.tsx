@@ -1,6 +1,7 @@
 
-import React from 'react';
-import { Search } from 'lucide-react';
+import React, { useState } from 'react';
+import { Search, MapPin, Info } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 interface ProductsHeaderProps {
   categories: any[];
@@ -8,23 +9,39 @@ interface ProductsHeaderProps {
 }
 
 const ProductsHeader: React.FC<ProductsHeaderProps> = ({ categories, categoryFilter }) => {
-  // Helper component for the arrow icon
-  const ChevronRightIcon = ({ size = 24 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  );
+  const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/products?search=${encodeURIComponent(searchQuery)}`);
+    }
+  };
 
   return (
     <div className="delivery-header">
-      <div className="delivery-search">
+      <div className="flex items-center justify-between mb-2">
+        <div className="flex items-center text-white">
+          <MapPin size={18} className="mr-1" />
+          <span className="text-sm font-medium">Entrega em até 45 min</span>
+        </div>
+        <button className="text-white text-sm flex items-center">
+          <Info size={16} className="mr-1" />
+          <span>Ajuda</span>
+        </button>
+      </div>
+      
+      <form onSubmit={handleSearch} className="delivery-search">
         <Search size={20} className="text-gray-400 mr-2" />
         <input 
           type="text" 
           placeholder="O que você quer comer hoje?" 
           className="w-full bg-transparent border-none outline-none text-gray-700"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
         />
-      </div>
+      </form>
       
       {/* Info da loja */}
       <div className="store-info">
@@ -36,13 +53,16 @@ const ProductsHeader: React.FC<ProductsHeaderProps> = ({ categories, categoryFil
           />
         </div>
         <div>
-          <h1 className="text-xl font-bold">{categoryFilter || "Future Shop"}</h1>
-          <p className="text-xs text-white/80">
-            {categoryFilter ? "Sem pedido mínimo" : "Sua loja digital"}
+          <h1 className="text-xl font-bold">{categoryFilter || "Seu Delivery"}</h1>
+          <p className="text-xs text-white/80 flex items-center">
+            <span className="bg-green-500 w-2 h-2 rounded-full mr-1"></span>
+            {categoryFilter ? "Entrega grátis" : "Aberto agora"}
           </p>
         </div>
         <div className="ml-auto">
-          <ChevronRightIcon size={24} />
+          <span className="bg-white/20 px-2 py-1 rounded-md text-xs font-medium">
+            4.8 ★
+          </span>
         </div>
       </div>
     </div>

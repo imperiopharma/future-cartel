@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Product, useCart } from '@/context/CartContext';
 import { toast } from 'sonner';
+import { PlusCircle } from 'lucide-react';
 
 interface ProductItemProps {
   product: Product;
@@ -31,15 +32,22 @@ const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
     return `R$ ${price.toFixed(2).replace('.', ',')}`;
   };
 
+  // Verificar se o produto está em promoção (para este exemplo, usamos ID múltiplo de 3)
+  const isOnSale = product.id % 3 === 0;
+  const originalPrice = isOnSale ? product.price * 1.2 : null;
+
   return (
-    <div className="food-item">
+    <div className="food-item hover:bg-gray-50 transition-colors">
       <div className="food-info">
         <h3 className="food-title">{product.name}</h3>
         <p className="food-description line-clamp-2">{product.description}</p>
         <div className="flex items-center">
           <span className="food-price">{formatPrice(product.price)}</span>
-          {product.id % 3 === 0 && (
-            <span className="old-price">{formatPrice(product.price * 1.2)}</span>
+          {isOnSale && (
+            <span className="old-price">{formatPrice(originalPrice!)}</span>
+          )}
+          {isOnSale && (
+            <span className="ml-2 text-xs font-bold text-green-600 bg-green-100 px-1.5 py-0.5 rounded">-20%</span>
           )}
         </div>
       </div>
@@ -54,8 +62,9 @@ const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
         </Link>
         <button 
           onClick={handleAddToCart}
-          className="text-xs text-[hsl(var(--delivery-blue))] font-medium"
+          className="text-xs text-white font-medium bg-[hsl(var(--delivery-blue))] px-2 py-1 rounded-full flex items-center"
         >
+          <PlusCircle size={14} className="mr-1" />
           Adicionar
         </button>
       </div>

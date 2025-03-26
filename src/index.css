@@ -27,9 +27,9 @@
     --radius: 1rem;
     
     /* Novas cores para o delivery brasileiro */
-    --delivery-blue: 210 100% 59%;
+    --delivery-blue: 210 100% 50%;
     --delivery-red: 0 100% 50%;
-    --promotion-yellow: 48 100% 50%;
+    --promotion-yellow: 40 100% 50%;
   }
 
   * {
@@ -100,21 +100,13 @@
     @apply w-full p-3 rounded-lg glass focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all duration-300;
   }
 
-  .cart-counter {
-    @apply absolute -top-2 -right-2 w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center font-bold;
-  }
-
-  .scroll-container {
-    @apply overflow-y-auto scrollbar-thin;
-  }
-  
   /* Estilos para o app de delivery brasileiro */
   .delivery-app {
     @apply max-w-md mx-auto bg-white shadow-lg rounded-3xl overflow-hidden;
   }
   
   .delivery-header {
-    @apply bg-[hsl(var(--delivery-blue))] text-white p-4 rounded-b-[30px];
+    @apply bg-gradient-to-r from-[hsl(var(--delivery-blue))] to-[hsl(var(--delivery-blue))/90] text-white p-4 rounded-b-[30px] shadow-lg;
   }
   
   .delivery-search {
@@ -126,11 +118,11 @@
   }
   
   .store-logo {
-    @apply w-10 h-10 rounded-full bg-white p-0.5 mr-3;
+    @apply w-10 h-10 rounded-full bg-white p-0.5 mr-3 shadow-md;
   }
   
   .category-tabs {
-    @apply flex overflow-x-auto py-2 border-b border-gray-200 space-x-4 px-4 scrollbar-thin;
+    @apply flex overflow-x-auto py-3 border-b border-gray-100 space-x-4 px-4 scrollbar-thin;
   }
   
   .category-tab {
@@ -170,19 +162,23 @@
   }
   
   .food-image {
-    @apply w-20 h-20 rounded-lg object-cover ml-4;
+    @apply w-20 h-20 rounded-lg object-cover ml-4 shadow-md;
   }
   
   .delivery-footer {
-    @apply fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 py-2 px-4 flex justify-around items-center max-w-md mx-auto;
+    @apply fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 py-3 px-4 flex justify-around items-center max-w-md mx-auto shadow-lg;
   }
   
   .footer-item {
-    @apply flex flex-col items-center text-xs text-gray-500;
+    @apply flex flex-col items-center text-xs text-gray-500 transition-colors;
   }
   
   .footer-item.active {
     @apply text-[hsl(var(--delivery-blue))];
+  }
+  
+  .cart-counter {
+    @apply absolute -top-2 -right-2 w-5 h-5 rounded-full bg-[hsl(var(--delivery-red))] text-white text-xs flex items-center justify-center font-bold shadow-md;
   }
 }
 
@@ -194,6 +190,7 @@
   
   .scrollbar-thin::-webkit-scrollbar {
     width: 4px;
+    height: 4px;
   }
 
   .scrollbar-thin::-webkit-scrollbar-track {

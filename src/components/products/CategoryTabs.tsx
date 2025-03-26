@@ -25,16 +25,18 @@ const CategoryTabs: React.FC<CategoryTabsProps> = ({ categories, selectedCategor
     <div className="category-tabs">
       <Link 
         to="/products" 
-        className={`category-tab ${!selectedCategory ? 'active' : ''}`}
+        className={`category-tab ${!selectedCategory ? 'active' : ''} flex flex-col items-center`}
       >
+        <div className={`w-2 h-2 rounded-full mb-1 ${!selectedCategory ? 'bg-[hsl(var(--delivery-blue))]' : 'bg-transparent'}`}></div>
         Todos
       </Link>
       {categories.map((category) => (
         <Link
           key={category.id}
           to={`/products?category=${category.name}`}
-          className={`category-tab ${selectedCategory === category.name ? 'active' : ''}`}
+          className={`category-tab ${selectedCategory === category.name ? 'active' : ''} flex flex-col items-center`}
         >
+          <div className={`w-2 h-2 rounded-full mb-1 ${selectedCategory === category.name ? 'bg-[hsl(var(--delivery-blue))]' : 'bg-transparent'}`}></div>
           {category.name}
         </Link>
       ))}

@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { Product } from '@/context/CartContext';
 import ProductItem from './ProductItem';
 import { Skeleton } from '@/components/ui/skeleton';
-import { PackageOpen } from 'lucide-react';
 
 interface ProductListProps {
   products: Product[];
@@ -39,16 +38,13 @@ const ProductList: React.FC<ProductListProps> = ({ products, loading, searchQuer
   if (products.length === 0) {
     return (
       <div className="p-8 text-center">
-        <div className="flex justify-center mb-4">
-          <PackageOpen size={48} className="text-gray-400" />
-        </div>
         <h3 className="text-lg font-medium mb-2">Nenhum produto encontrado</h3>
         <p className="text-gray-500 mb-6">
           {searchQuery 
             ? `Não encontramos produtos com "${searchQuery}".` 
             : 'Não há produtos disponíveis nesta categoria.'}
         </p>
-        <Link to="/products" className="text-white bg-[hsl(var(--delivery-blue))] px-4 py-2 rounded-full inline-flex items-center">
+        <Link to="/products" className="primary-button inline-flex">
           Ver Todos os Produtos
         </Link>
       </div>

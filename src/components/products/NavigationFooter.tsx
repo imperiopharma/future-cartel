@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Home, ShoppingCart, Heart, Menu } from 'lucide-react';
+import { Home, ShoppingCart, Heart, User } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 
 const NavigationFooter: React.FC = () => {
@@ -12,10 +12,6 @@ const NavigationFooter: React.FC = () => {
       <Link to="/products" className="footer-item active">
         <Home size={20} />
         <span>Início</span>
-      </Link>
-      <Link to="/home" className="footer-item">
-        <Menu size={20} />
-        <span>Sobre</span>
       </Link>
       <Link to="/cart" className="footer-item relative">
         <ShoppingCart size={20} />
@@ -28,6 +24,10 @@ const NavigationFooter: React.FC = () => {
         <Heart size={20} />
         <span>Favoritos</span>
       </div>
+      <Link to="/admin" className="footer-item">
+        <User size={20} />
+        <span>Admin</span>
+      </Link>
     </div>
   );
 };
